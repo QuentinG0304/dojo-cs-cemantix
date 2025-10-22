@@ -5,6 +5,7 @@
   </div>
   <p-button (click)="sendMyGuess()">Send</p-button>
   <p-progressBar [value]="myResultDistance" [style]="{ height: '10px' }" />
+  <label>Distance: {{ myResultDistance }}</label>
   @if (hasError){
     <label>Mot inconnu... 🫠</label>
   } @else if (myResultDistance < 20){

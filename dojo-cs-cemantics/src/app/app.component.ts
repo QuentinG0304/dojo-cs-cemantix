@@ -7,6 +7,7 @@ import {InputTextModule} from "primeng/inputtext";
 import {Button} from "primeng/button";
 import {ProgressBarModule} from "primeng/progressbar";
 import {catchError, EMPTY} from "rxjs";
+import {ResponseWord} from "./model/responseWord.model";
 
 @Component({
   selector: 'app-root',
@@ -24,18 +25,17 @@ export class AppComponent {
   myResultDistance = 0
 
   sendMyGuess() {
-    this.myResultDistance = 45
     this.apiClient.getPokemonValue({
       value: this.myGuess
     }).pipe(
-      catchError(err => {
+      catchError((err:unknown) => {
         this.myResultDistance = 0
         this.hasError = true;
         return EMPTY
       })
-    ).subscribe(result=> {
+    ).subscribe((result: ResponseWord) => {
       this.hasError = false;
-      this.myResultDistance = result.value
+      this.myResultDistance = result.result * 100
     });
   }
 }
