@@ -1,0 +1,4 @@
+[build]
+  base = "dojo-cs-cemantics"
+  command = "npm run build -- --configuration production"
+  publish = "dojo-cs-cemantics/dist/dojo-cs-cemantics"
